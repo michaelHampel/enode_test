@@ -1,0 +1,17 @@
+curl https://oauth.sandbox.enode.io/oauth2/token \
+-X POST \
+-u 944142e9-20c0-4102-9bb8-d19f25ae7237:8d9696f32d13d1cdfc309f9be24814c949636f96 \
+-d "grant_type=client_credentials"
+
+
+curl https://enode-api.sandbox.enode.io/users/1ab23cd4/link \
+-X POST \
+-H "Authorization: Bearer KMPI8rA0qCzIKwWlZmjYhHChIn0xecVWTsquSmq24jE.njbYwTLKtnrSYoGWSvA677hM-GIsFctaK2j_2CFfuvc \
+-H "Content-Type: application/json" \
+-d '{ "vendorType": "vehicle" }'
+
+curl https://enode-api.sandbox.enode.io/users/1ab23cd4/link \
+-X POST \
+-H "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+-H "Content-Type: application/json" \
+-d '{ "vendorType": "vehicle" }'

@@ -1,0 +1,35 @@
+@clientId=944142e9-20c0-4102-9bb8-d19f25ae7237
+@secret=8d9696f32d13d1cdfc309f9be24814c949636f96
+
+@sandbox_url=https://enode-api.sandbox.enode.io
+
+### Get OAuth token
+# @name tokenrequest
+POST https://oauth.sandbox.enode.io/oauth2/token HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+Authorization: Basic {{clientId}}:{{secret}}
+
+grant_type=client_credentials
+
+###
+
+@token={{tokenrequest.response.body.access_token}}
+@tokenType={{tokenrequest.response.body.token_type}}
+
+###
+
+@userId=1ab23cd54
+
+### Create link session for user
+# @name linkrequest
+POST https://enode-api.sandbox.enode.io/users/{{userId}}/link HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "vendorType": "vehicle"
+}
+
+###
+
+@linkURL = {{linkrequest.response.body.linkUrl}}
